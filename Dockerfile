@@ -5,11 +5,17 @@ FROM ubuntu:24.04
 ADD https://github.com/kost/tty2web/releases/download/v3.0.3/tty2web_linux_amd64 /usr/local/bin/tty2web
 RUN chmod +x /usr/local/bin/tty2web
 
+# Create user
+RUN useradd -m -s /bin/bash user
+
 # Set terminal type
 ENV TERM=xterm-256color
 
 # Expose port 8080 for the web server
 EXPOSE 8080
+
+# Switch to user
+USER user
 
 # Run tty2web with the specified port and options
 CMD ["tty2web", "--port", "8080", "-w", "bash"]
