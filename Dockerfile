@@ -18,7 +18,7 @@ EXPOSE 8080
 USER user
 
 # Identify the container version
-ENV CONTAINER_VERSION=0.0.42
+ENV CONTAINER_VERSION=0.0.43
 
 # Run tty2web with the specified port and options
 CMD ["tty2web", "--port", "8080", "-w", "bash"]
